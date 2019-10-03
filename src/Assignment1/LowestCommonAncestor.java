@@ -14,5 +14,22 @@ public class LowestCommonAncestor <Key extends Comparable<Key>, Value>{
 			this.key = key;
 		}
 	}
+	//Is empty implementation
+		public boolean isEmpty()
+		{
+			return size() == 0;
+		}
+		
+		public int size() 
+		{
+			  return(size(root)); 
+			}
+			private int size(Node node) 
+			{ 
+			  if (node == null) return(0); 
+			  else { 
+			    return(size(node.left) + 1 + size(node.right)); 
+			  } 
+			} 
 
 }
