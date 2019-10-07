@@ -79,5 +79,38 @@ public class LowestCommonAncestor <Key extends Comparable<Key>, Value>{
 				}
 				return null;
 			}
+			//Function to find LCA
+			public Node search(Node root, Key value1, Key value2)
+			{
+				if(root != null &&(get(value1)!=null &&get(value2)!=null))
+				{
+					
+					if(root.key.compareTo(value1) == 0 || root.key.compareTo(value2) == 0)
+					{
+						return root;
+					}
 
+					Node leftBranch = search(root.leftSide, value1,value2);
+					Node rightBranch = search(root.rightSide,value1,value2);
+					//If they both have an answer this is the LCA 
+					
+					if(leftBranch != null && rightBranch != null)
+					{
+						return root;
+					}
+					//Find & return node with value or return null if doesn't exist
+					if(leftBranch != null) 
+					{
+						return leftBranch;
+
+					}
+					else if(rightBranch != null)
+					{
+						return rightBranch;
+					}
+					else 
+						return null;
+				}
+				return null;
+			}
 }
