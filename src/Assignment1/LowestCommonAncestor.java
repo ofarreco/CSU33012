@@ -14,7 +14,7 @@ public class LowestCommonAncestor <Key extends Comparable<Key>, Value>{
 			this.key = key;
 		}
 	}
-	//Is empty implementation
+	//Tree is empty implementation
 		public boolean isEmpty()
 		{
 			return size() == 0;
@@ -79,7 +79,7 @@ public class LowestCommonAncestor <Key extends Comparable<Key>, Value>{
 				}
 				return null;
 			}
-			//Function to find LCA
+			//Function to find LowestCommonAncestor
 			public Node search(Node root, Key value1, Key value2)
 			{
 				if(root != null &&(get(value1)!=null &&get(value2)!=null))
@@ -113,4 +113,5 @@ public class LowestCommonAncestor <Key extends Comparable<Key>, Value>{
 				}
 				return null;
 			}
+
 }
