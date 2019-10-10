@@ -68,35 +68,45 @@ class LowestCommonAncestorTest {
 		assertSame(test.search(test.root,18,7).key,8);
 		assertSame(test.search(test.root,12,16).key,14);	
 	}
-	@Test
-	public void testForTreeSize1()
-	{
-		
-	}
+	
 	@Test
 	public void testTwoNodes()
 	{
-		
+		LowestCommonAncestor<Integer, Integer> test = new LowestCommonAncestor<Integer, Integer>();
+		test.put(7, 1);
+		test.put(8, 2);
+		assertSame(test.search(test.root, 7, 8).key, 7);
+		assertNull(test.search(test.root, 7, 1)); //Test to see if one node doesn't exist
 	}
 	@Test
 	public void testForNonExistingNodes()
 	{
+		LowestCommonAncestor<Integer, Integer> test = new LowestCommonAncestor<Integer, Integer>();
+		test.put(1, 6);
+		test.put(2, 5);
+		test.put(3, 4);
+		test.put(4, 3);
+		test.put(5, 2);
+		test.put(6, 1);
 		
+		assertNull(test.search(test.root, 7, 10));
+		assertNull(test.search(test.root, 8, 9));
+		assertNull(test.search(test.root, 9, 8));
+		assertNull(test.search(test.root, 10, 7));
 	}
-	@Test
-	public void testAllSameNode()
-	{	
-		
-	}
+
 @Test 
 	public void testSameValue()
 	{
-		
-	}
-	@Test
-	public void testCommonAncestor(){
-		
-		
-
+	LowestCommonAncestor<Integer, Integer> test = new LowestCommonAncestor<Integer, Integer>();
+	test.put(1, 6);
+	test.put(2, 5);
+	test.put(3, 4);
+	test.put(4, 3);
+	test.put(5, 2);
+	test.put(6, 1);
+	
+	assertSame(test.search(test.root, 1,1).key, 1);
+	assertSame(test.search(test.root, 4, 4).key, 4);
 	}
 }
