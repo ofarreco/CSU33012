@@ -14,12 +14,11 @@ public class LowestCommonAncestor <Key extends Comparable<Key>, Value>{
 			this.key = key;
 		}
 	}
-	//Tree is empty implementation
+	//Empty Tree implementation
 		public boolean isEmpty()
 		{
 			return size() == 0;
 		}
-		
 		public int size() 
 		{
 			  return(size(root)); 
@@ -31,11 +30,10 @@ public class LowestCommonAncestor <Key extends Comparable<Key>, Value>{
 			    return(size(node.leftSide) + 1 + size(node.rightSide)); 
 			  } 
 			} 
-			//Put method, inserts value into tree
+			//Put method which inserts value into tree
 			public void put(Key key, Value value){
 				root = put(root, key, value);
 			}
-			
 			private Node put(Node x, Key key, Value value){
 				if(x == null)
 				{
@@ -56,9 +54,7 @@ public class LowestCommonAncestor <Key extends Comparable<Key>, Value>{
 				x.N = 1 + size(x.leftSide) + size(x.rightSide);
 				return x;
 		 	}
-			
-			//Get method, search by key order
-
+			//Get method which searches by key order
 			public Value get(Key key){
 				Node x = root;
 				
