@@ -25,4 +25,27 @@ public class DirectedAcyclicGraphTest {
 		String adjacent = "[6, 7]";
 		assertEquals(adjacent, graph.adjacent(4).toString());
 	}
+	@Test(expected=Exception.class)
+	public void exceptionTest(){
+		
+		//Impossible to create when there's less than 0 vertices
+		
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(-5);
+	}
+	
+	@Test
+	public void addEdge()
+	{
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(5);
+		
+		graph.addEdge(1,2);
+
+		//Negative so will print a system error and will not addEdge
+		graph.addEdge(-1, -6);
+		
+		//This will not addEdge as 12 > 5
+		graph.addEdge(3, 12);
+		
+		assertEquals(1, graph.edge());
+	}
 }
