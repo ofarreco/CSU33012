@@ -48,4 +48,17 @@ public class DirectedAcyclicGraphTest {
 		
 		assertEquals(1, graph.edge());
 	}
+	@Test
+	public void testIndeg()
+	{
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(5);
+		
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(3, 3);
+		
+		assertEquals(1, graph.indeg(3));
+	
+		assertEquals(-1, graph.indeg(5));
+	}
 }
