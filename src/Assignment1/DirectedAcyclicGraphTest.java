@@ -61,4 +61,12 @@ public class DirectedAcyclicGraphTest {
 	
 		assertEquals(-1, graph.indeg(5));
 	}
+	@Test
+	public void testLCAForEmptyDirectedAcyclicGraph()
+	{
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(5);
+		assertEquals(-1, graph.findLCA(0, 2));
+		assertEquals(-1, graph.findLCA(0, 4));
+		assertEquals(-1, graph.findLCA(0, 0));
+	}
 }
