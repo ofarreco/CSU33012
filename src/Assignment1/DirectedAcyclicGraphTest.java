@@ -98,4 +98,54 @@ public class DirectedAcyclicGraphTest {
 		assertEquals(-1, graph.findLCA(1, 2));
 		
 	}
+	@Test
+	public void testLCA()
+	{
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(10);
+		
+		//--------3---4----8--
+		//---0--1-------6----7
+		//--------2---5-------
+		
+		graph.addEdge(0, 1);
+		graph.addEdge(1, 3);
+		graph.addEdge(1, 2);
+		graph.addEdge(3, 4);
+		graph.addEdge(2, 5);
+		graph.addEdge(5, 6);
+		graph.addEdge(4, 6);
+		graph.addEdge(6, 7);
+		graph.addEdge(4, 8);
+		graph.addEdge(8, 7);
+		
+		assertEquals(1, graph.findLCA(4, 5));
+		assertEquals(8, graph.findLCA(7, 8));
+		assertEquals(6, graph.findLCA(6, 7));
+	}
+	
+	@Test
+	public void testLCAforNoCommonAncestors()
+	{
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(10);
+		graph.addEdge(0, 1);
+		graph.addEdge(0, 3);
+		graph.addEdge(1, 3);
+		graph.addEdge(3, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(1, 5);
+		graph.addEdge(2, 5);
+		
+		//Check LCA function works
+		assertEquals(0, graph.findLCA(2, 1));
+		assertEquals(3, graph.findLCA(2, 3));
+		assertEquals(2, graph.findLCA(4, 5));
+		
+		//Check for non-present vertex
+		assertEquals(-1, graph.findLCA(8, 2));
+		
+		//Check for negative vertex
+		assertEquals(-1, graph.findLCA(-2, 3));
+		assertEquals(-1, graph.findLCA(3, -2));
+		assertEquals(-1, graph.findLCA(-2, -3));
+	}
 }
