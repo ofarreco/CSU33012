@@ -69,4 +69,14 @@ public class DirectedAcyclicGraphTest {
 		assertEquals(-1, graph.findLCA(0, 4));
 		assertEquals(-1, graph.findLCA(0, 0));
 	}
+	@Test
+	public void testLCAForSameVertex()
+	{
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(10);
+		
+		graph.addEdge(0, 1);
+		graph.addEdge(0, 3);
+		graph.addEdge(1, 3);
+		
+		assertEquals(3, graph.findLCA(3, 3));
 }
