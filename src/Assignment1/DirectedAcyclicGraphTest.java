@@ -148,4 +148,104 @@ public class DirectedAcyclicGraphTest {
 		assertEquals(-1, graph.findLCA(3, -2));
 		assertEquals(-1, graph.findLCA(-2, -3));
 	}
+	@Test
+	public void testOutdegree()
+	{
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(5);
+		
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(3, 3);
+		
+		assertEquals(1, graph.outdeg(3));
+	
+		assertEquals(-1, graph.outdeg(5));
+	}
+	
+	@Test 
+	public void testV()
+	{
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(6);
+		assertEquals(6, graph.X());
+	}
+	
+	@Test
+	public void testE(){
+		
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(5);
+		
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(3, 3);
+		
+		assertEquals(3, graph.edge());
+	}
+	
+	@Test
+	public void testAdj()
+	{
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(5);
+		
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(3, 3);
+		graph.addEdge(4, 3);
+		
+		String adjacent = "[4]";
+		assertEquals(adjacent, graph.adjacent(2).toString());
+	}
+	
+	@Test
+	public void testforCycle()
+	{
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(10);
+		
+		graph.addEdge(0, 1);
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 0);
+		graph.addEdge(2, 3);
+		graph.addEdge(3, 4);
+		
+		graph.findCycle(0);
+		
+		assertTrue(graph.hasCycle());
+	}
+	
+	@Test
+	public void testAcyclicGraph()
+	{
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(10);
+		
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(3, 3);
+		
+		graph.findCycle(1);
+		assertFalse(graph.hasCycle());
+	}
+	
+	@Test
+	public void testLCA()
+	{
+		DirectedAcyclicGraph graph = new DirectedAcyclicGraph(10);
+		
+		//--------3---4----8--
+		//---0--1-------6----7
+		//--------2---5-------
+		
+		graph.addEdge(0, 1);
+		graph.addEdge(1, 3);
+		graph.addEdge(1, 2);
+		graph.addEdge(3, 4);
+		graph.addEdge(2, 5);
+		graph.addEdge(5, 6);
+		graph.addEdge(4, 6);
+		graph.addEdge(6, 7);
+		graph.addEdge(4, 8);
+		graph.addEdge(8, 7);
+		
+		assertEquals(1, graph.findLCA(4, 5));
+		assertEquals(8, graph.findLCA(7, 8));
+		assertEquals(6, graph.findLCA(6, 7));
+	}
 }
